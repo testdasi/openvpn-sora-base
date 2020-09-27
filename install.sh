@@ -4,7 +4,7 @@
 apt-get -y update \
     && apt-get -y install apt-transport-https \
     && apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip \
-    && apt-get -y install wget curl dnsutils sipcalc jq gnupg gnupg2 gnupg1 libicu60 libssl1.0
+    && apt-get -y install wget curl dnsutils sipcalc jq gnupg gnupg2 gnupg1 libicu63 libssl1.1
 
 # install sonarr
 SONARR_VERSION=$(curl -sX GET https://services.sonarr.tv/v1/download/master | jq -r '.version')
