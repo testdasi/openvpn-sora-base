@@ -32,17 +32,24 @@ curl -o /tmp/jacket.tar.gz -L "https://github.com/Jackett/Jackett/releases/downl
     && rm -f /tmp/jacket.tar.gz \
     && echo "$(date "+%d.%m.%Y %T") Added jackett version ${JACKETT_RELEASE}" >> /build_date.info
 
+# install torsocks and privoxy
+apt-get -y install torsocks privoxy \
+    && mkdir -p /etc/tor \
+    && rm -rf /etc/tor/* \
+    && mkdir -p /etc/privoxy \
+    && rm -rf /etc/privoxy/*
+
 # install openvpn base
 curl -o /install_openvpn.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-client-aio-base/master/install.sh"
-RUN /bin/bash /install_openvpn.sh \
+/bin/bash /install_openvpn.sh \
     && rm -f /install_openvpn.sh
 
 # install hydesa base
 curl -o /install_hydesa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hydesa-base/master/install.sh"
-RUN /bin/bash /install_hydesa.sh \
+/bin/bash /install_hydesa.sh \
     && rm -f /install_hydesa.sh
 
 # install hyrosa base
 curl -o /install_hyrosa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hyrosa-base/master/install.sh"
-RUN /bin/bash /install_hyrosa.sh \
+/bin/bash /install_hyrosa.sh \
     && rm -f /install_hyrosa.sh
