@@ -2,7 +2,7 @@
 
 # install more packages
 apt-get -y update \
-    && apt-get -y install apt-transport-https tini \
+    && apt-get -y install apt-transport-https \
     && apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip \
     && apt-get -y install wget curl dnsutils sipcalc jq gnupg gnupg2 gnupg1 libicu63 libssl1.1
 
