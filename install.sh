@@ -8,7 +8,7 @@ apt-get -y update \
     && apt-get -y update
 
 # install more packages
-apt-get -y install wget curl dnsutils sipcalc jq libicu63 libssl1.1 \
+apt-get -y install wget curl dnsutils sipcalc jq libicu63 libssl1.1
 apt-get -y install mono-complete
 apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip
 
