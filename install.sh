@@ -1,10 +1,16 @@
 #!/bin/bash
 
+# add mono repo
+apt-get -y update \
+    && apt-get -y install apt-transport-https dirmngr gnupg gnupg2 gnupg1 ca-certificates \
+    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
+    && echo "deb https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+
 # install more packages
 apt-get -y update \
-    && apt-get -y install apt-transport-https \
-    && apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip \
-    && apt-get -y install wget curl dnsutils sipcalc jq gnupg gnupg2 gnupg1 libicu63 libssl1.1
+    && apt-get -y install mono-complete \
+    && apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip mono-addins \
+    && apt-get -y install wget curl dnsutils sipcalc jq libicu63 libssl1.1
 
 # install sonarr
 SONARR_VERSION=$(curl -sX GET https://services.sonarr.tv/v1/download/master | jq -r '.version')
