@@ -53,6 +53,9 @@ source /install_openvpn.sh
 curl -o /install_hydesa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hydesa-base/master/install.sh"
 source /install_hydesa.sh
 
-install hyrosa base
+# install hyrosa base
 curl -o /install_hyrosa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hyrosa-base/master/install.sh"
 source /install_hyrosa.sh
+
+# install cloudcmd
+npm i cloudcmd -g
