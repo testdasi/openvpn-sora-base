@@ -21,12 +21,11 @@ curl -o /tmp/sonarr.tar.gz -L "https://download.sonarr.tv/v2/master/mono/NzbDron
     && echo "$(date "+%d.%m.%Y %T") Added sonarr version ${SONARR_VERSION}" >> /build_date.info
 
 # install radarr
-RADARR_RELEASE=$(curl -sX GET "https://api.github.com/repos/Radarr/Radarr/releases" | jq -r '.[0] | .tag_name')
-radarr_url=$(curl -s https://api.github.com/repos/Radarr/Radarr/releases/tags/"${RADARR_RELEASE}" | jq -r '.assets[].browser_download_url' | grep linux)
-curl -o /tmp/radar.tar.gz -L "${radarr_url}" \
+RADARR_RELEASE=$(curl -sL "https://radarr.servarr.com/v1/update/master/changes?os=linux" | jq -r '.[0].version')
+curl -o /tmp/radarr.tar.gz -L "https://radarr.servarr.com/v1/update/master/updatefile?version=${RADARR_RELEASE}&os=linux&runtime=netcore&arch=x64" \
     && mkdir -p /app/radarr \
-    && tar ixzf /tmp/radar.tar.gz -C /app/radarr --strip-components=1 \
-    && rm -f /tmp/radar.tar.gz \
+    && tar ixzf /tmp/radarr.tar.gz -C /app/radarr --strip-components=1 \
+    && rm -f /tmp/radarr.tar.gz \
     && echo "$(date "+%d.%m.%Y %T") Added radarr version ${RADARR_RELEASE}" >> /build_date.info
 
 # install jackett
