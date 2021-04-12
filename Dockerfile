@@ -1,4 +1,4 @@
-ARG FRM='debian:buster-slim'
+ARG FRM='mono:latest'
 ARG TAG='latest'
 
 FROM ${FRM}
