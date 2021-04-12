@@ -1,10 +1,21 @@
-ARG FRM='testdasi/debian-buster-slim-base'
-ARG TAG='latest-mono-amd64'
+ARG FRM='debian:buster-slim'
+ARG TAG='latest'
 
-FROM ${FRM}:${TAG}
+FROM ${FRM}
 ARG FRM
 ARG TAG
+ARG TARGETPLATFORM
 
+# Install basic packages
+RUN apt-get -y update \
+    && apt-get -y dist-upgrade \
+    && apt-get -y install sudo bash nano procps tini \
+    && apt-get -y autoremove \
+    && apt-get -y autoclean \
+    && apt-get -y clean \
+    && rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/*
+
+# Install script
 COPY ./install.sh /
 RUN /bin/bash /install.sh \
     && rm -f /install*.sh
