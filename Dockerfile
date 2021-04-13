@@ -16,7 +16,7 @@ RUN apt-get -y update \
     && rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 # Install script
-COPY ./install.sh /
+COPY ./*.sh /
 RUN /bin/bash /install.sh \
     && rm -f /install*.sh
 
