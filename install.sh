@@ -22,8 +22,6 @@ apt-get -y install wget curl dnsutils sipcalc jq libicu63 libssl1.1
 apt-get -y install mono-complete
 apt-get -y install --no-install-recommends --no-install-suggests bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3 unzip
 # install sonarr
-#SONARR_VERSION=$(curl -sX GET https://services.sonarr.tv/v1/download/master | jq -r '.version')
-#curl -o /tmp/sonarr.tar.gz -L "https://download.sonarr.tv/v2/master/mono/NzbDrone.master.${SONARR_VERSION}.mono.tar.gz" \
 SONARR_VERSION=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"main\") | .version")
 curl -o /tmp/sonarr.tar.gz -L "https://download.sonarr.tv/v3/main/${SONARR_VERSION}/Sonarr.main.${SONARR_VERSION}.linux.tar.gz" \
     && mkdir -p /app/sonarr \
