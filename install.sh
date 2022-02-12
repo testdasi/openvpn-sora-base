@@ -29,7 +29,7 @@ curl -o /tmp/sonarr.tar.gz -L "https://download.sonarr.tv/v3/main/${SONARR_VERSI
     && rm -f /tmp/sonarr.tar.gz \
     && echo "$(date "+%d.%m.%Y %T") Added sonarr version ${SONARR_VERSION}" >> /build_date.info
 # install radarr
-RADARR_RELEASE=$(curl -sL "https://radarr.servarr.com/v1/update/master/changes?os=linux" | jq -r '.[0].version')
+RADARR_RELEASE=$(curl -sL "https://radarr.servarr.com/v1/update/master/changes?os=linux&runtime=netcore&arch=x64" | jq -r '.[0].version')
 curl -o /tmp/radarr.tar.gz -L "https://radarr.servarr.com/v1/update/master/updatefile?version=${RADARR_RELEASE}&os=linux&runtime=netcore&arch=x64" \
     && mkdir -p /app/radarr \
     && tar ixzf /tmp/radarr.tar.gz -C /app/radarr --strip-components=1 \
