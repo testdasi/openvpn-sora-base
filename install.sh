@@ -53,7 +53,7 @@ cd /tmp \
     && chmod +x /app/launcher/launcher-python3.sh \
     && rm -f /tmp/launcher.zip
 # install cloudcmd
-npm i cloudcmd -g
+# npm i cloudcmd -g
 
 ## Clean up ##
 apt-get -y autoremove \
