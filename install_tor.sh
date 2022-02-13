@@ -10,15 +10,17 @@ curl -o /tmp/jacket.tar.gz -L "https://github.com/Jackett/Jackett/releases/downl
     && echo "$(date "+%d.%m.%Y %T") Added jackett version ${JACKETT_RELEASE}" >> /build_date.info
 
 # install rtorrent with screen (required to send it to background)
+# also install transmission-daemon as alternative to rtorrent (new flood supports transmission)
 apt-get -y update \
-    && apt-get -y install rtorrent screen
-    
+    && apt-get -y install rtorrent screen \
+    && apt-get -y install transmission-daemon
+
 # install nodejs to run flood
 curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get -y install -y nodejs
 # New fork of flood at https://github.com/jesec/flood
 npm install --global flood
 
-# clean up building packages (and reinstall procps which is somehow removed by autoremove)
+# clean up packages (and reinstall procps which is somehow removed by autoremove)
 apt-get -y autoremove \
     && apt-get -y install procps
