@@ -5,8 +5,6 @@ curl -o /install_openvpn.sh -L "https://raw.githubusercontent.com/testdasi/openv
 source /install_openvpn.sh
 
 ## NZB and TOR ##
-# curl -o /install_hydesa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hydesa-base/master/install.sh"
-# curl -o /install_hyrosa.sh -L "https://raw.githubusercontent.com/testdasi/openvpn-hyrosa-base/master/install.sh"
 source /install_nzb.sh
 source /install_tor.sh
 
